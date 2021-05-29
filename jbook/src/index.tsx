@@ -23,11 +23,16 @@ const App = () => {
             return;
         }
 
+        //buible step
         const result = await ref.current.build({
             entryPoints: ['index.js'],
             bundle: true,
             write: false,
             plugins: [unpkgPathPlugin()],
+            define: { //FOR VARIABLE
+                'process.env.NODE_ENV': '"production"',
+                global: 'window'
+            }
         });
 
         // console.log(result);
